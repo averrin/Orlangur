@@ -2,8 +2,8 @@ index = require './index'
 collections = require './collections'
 
 module.exports = (app)->
-  app.all '/', index.list
-  app.all '/collections/:name', collections.view
-  app.all '/add/:name', index.add
-  app.all '/del/:name', index.del
+  app.all '/', collections.list
+  app.all '/list/:name', collections.view
+  app.all '/add/:name', collections.add
+  app.all '/del/:name', collections.del
   app.routes.get

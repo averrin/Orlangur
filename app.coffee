@@ -12,6 +12,11 @@ util = require 'util'
 _ = require 'underscore'
 stylus = require 'stylus'
 
+Handlebars = require 'Handlebars'
+global.Handlebars = Handlebars
+
+console.dir Handlebars
+
 app = express()
 
 app.configure ->
@@ -29,8 +34,10 @@ app.configure ->
 app.configure 'development', ->
   app.set express.errorHandler(dumpExceptions: true, showStack: true)
 
-console.log 'Routes:'.blue
-console.log routes(app)
+
+routes_dict = routes(app)
+console.log 'Routes:'.blue, routes_dict.length
+#console.log routes_dict
 
 global.db = mongo.connect(util.format('mongodb://%s:%s@averr.in:27017/%s', 'averrin', 'aqwersdf', 'orlangur'))
 

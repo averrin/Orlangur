@@ -2,7 +2,17 @@ extends layout
 
 block content
     h1 Collections!
-    ul
-        each name in collection
+    #list.span4.well
+        ul
+            each col in collection
+                li
+                    //a(href="#!/list/" + col.name)= col.desc
+                    //a(href="#", data-name=col.name).del_collection.right.btn.btn-mini  del
+                    p!= Handlebars.compile(col.template)({meta:col})
+
+        button.btn.add_collection Add
+
+
+    #items.span8.well
+        ul
             li
-                a(href="#!/collections/" + name)= name

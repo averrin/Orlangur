@@ -2,10 +2,14 @@ doctype 5
 html
     head
         title Collections
+        link(rel='stylesheet', href='/components/bootstrap.css/css/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='/components/jquery/jquery.min.js')
         script(src='/components/underscore/underscore-min.js')
         script(src='/components/backbone/backbone.js')
+        script(src='/components/bootstrap.css/js/bootstrap.min.js')
+        script(src='/components/bootbox/bootbox.min.js')
         script(src='/javascripts/main.js')
     body
-        block content
+        #content.row-fluid
+            block content
