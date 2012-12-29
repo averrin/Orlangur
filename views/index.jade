@@ -10,9 +10,10 @@ block content
                     //a(href="#", data-name=col.name).del_collection.right.btn.btn-mini  del
                     p!= Handlebars.compile(col.template)({meta:col})
 
-        button.btn.add_collection Add
+        .form-actions
+            button.btn.add_collection Add
+            &nbsp;
+            button.btn.edit_meta Edit Meta
 
 
     #items.span8.well
-        ul
-            li

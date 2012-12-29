@@ -1,4 +1,11 @@
 _ = require 'underscore'
+sync  = require 'synchronize'
+mongo = require 'mongo-lite'
+util = require 'util'
+
+#mongo.options.safe = true
+mongo.options.multi = true
+db = mongo.connect(util.format('mongodb://%s:%s@averr.in:27017/%s', 'averrin', 'aqwersdf', 'orlangur'))
 
 success = (res)->
   res.send
@@ -53,3 +60,16 @@ exports.view = (req, res)->
     if err
       error res, err
     res.send docs
+
+exports.update = (req, res) ->
+  items = JSON.parse req.param('items', null)
+  if items
+    console.log '----'
+    console.log items[1]
+    db.collection(req.params.name).save items[1], (err)->
+      db.collection(req.params.name).all name:items[1].name, (err, docs)->
+        console.log docs
+        console.log '----'
+        success res
+  else
+    error res, 'items is null'

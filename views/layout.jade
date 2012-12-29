@@ -3,13 +3,26 @@ html
     head
         title Collections
         link(rel='stylesheet', href='/components/bootstrap.css/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/components/bootstrap-modal/css/bootstrap-modal.css')
+        link(rel='stylesheet', href='/components/codemirror/lib/codemirror.css')
+        link(rel='stylesheet', href='/components/codemirror/theme/ambiance.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='/components/jquery/jquery.min.js')
         script(src='/components/underscore/underscore-min.js')
         script(src='/components/backbone/backbone.js')
         script(src='/components/bootstrap.css/js/bootstrap.min.js')
+        script(src='/components/bootstrap-modal/js/bootstrap-modal.js')
+        script(src='/components/bootstrap-modal/js/bootstrap-modalmanager.js')
         script(src='/components/bootbox/bootbox.min.js')
+        script(src='/components/codemirror-compressed.js')
         script(src='/javascripts/main.js')
+
+        script
+            $('body').modalmanager('loading')
+
     body
         #content.row-fluid
             block content
+
+        #modals
+            include modals

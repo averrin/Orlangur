@@ -1,0 +1,10 @@
+#meta_editor.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='Editor', aria-hidden='true')
+    .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel Edit Metadata
+        .modal-body
+            #editor
+                | codemirror here
+        .modal-footer
+            button.btn(data-dismiss='modal', aria-hidden='true') Close
+            button#save_meta.btn.btn-primary Save changes
