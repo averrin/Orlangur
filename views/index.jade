@@ -8,7 +8,7 @@ block content
                 li
                     //a(href="#!/list/" + col.name)= col.desc
                     //a(href="#", data-name=col.name).del_collection.right.btn.btn-mini  del
-                    p!= Handlebars.compile(col.template)({meta:col})
+                    p!= Handlebars.compile(col.template ? col.template : "{{meta.desc}}")({meta:col})
 
         .form-actions
             button.btn.add_collection Add
@@ -16,4 +16,9 @@ block content
             button.btn.edit_meta Edit Meta
 
 
-    #items.span8.well
+    .span8.well
+        #col_info
+            p info about collections
+            p collection actions
+        #items
+            ul
