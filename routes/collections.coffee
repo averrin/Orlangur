@@ -26,8 +26,11 @@ exports.list = (req, res) ->
             console.log err
             return false
 
-        res.render "index",
-            collection: docs
+        result = []
+        _.each docs, (e,i)->
+            result.push util.format '<div class="collection">%s</div>', Handlebars.compile(if e.template then e.template else "{{meta.desc}}")(meta:e)
+
+        res.send result
 
 
 exports.add = (req, res) ->
@@ -76,8 +79,10 @@ exports.view = (req, res)->
                             item: e
                         )
                     else
-                        items.push util.format '<li><pre>%s</pre></li>', JSON.stringify(e, `undefined`, 4)
-                res.send items
+                        items.push util.format '<li><pre>%s</pre></li>', JSON.stringify(e, `undefined`, 4).replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                res.send
+                    items: items
+                    meta: meta
 
 exports.update = (req, res) ->
     meta = db.collection('__meta__')
